@@ -64,7 +64,7 @@ public class BowStringController : MonoBehaviour
                 midPointParent.InverseTransformPoint(midPointGrabObject.position); // localPosition
 
             //get the offset
-            float midPointLocalZAbs = Mathf.Abs(midPointLocalSpace.z);
+            float midPointLocalZAbs = Mathf.Abs(midPointLocalSpace.x);
 
             HandleStringPushedBackToStart(midPointLocalSpace);
 
@@ -79,10 +79,10 @@ public class BowStringController : MonoBehaviour
     private void HandlePullingString(float midPointLocalZAbs, Vector3 midPointLocalSpace)
     {
         //what happens when we are between point 0 and the string pull limit
-        if (midPointLocalSpace.z < 0 && midPointLocalZAbs < bowStringStretchLimit)
+        if (midPointLocalSpace.x < 0 && midPointLocalZAbs < bowStringStretchLimit)
         {
             strength = Remap(midPointLocalZAbs, 0, bowStringStretchLimit, 0, 1);
-            midPointVisualObject.localPosition = new Vector3(0, 0, midPointLocalSpace.z);
+            midPointVisualObject.localPosition = new Vector3(midPointLocalSpace.x, 0, 0);
         }
     }
 
@@ -94,17 +94,17 @@ public class BowStringController : MonoBehaviour
     private void HandleStringPulledBackTolimit(float midPointLocalZAbs, Vector3 midPointLocalSpace)
     {
         //We specify max pulling limit for the string. We don't allow the string to go any farther than "bowStringStretchLimit"
-        if (midPointLocalSpace.z < 0 && midPointLocalZAbs >= bowStringStretchLimit)
+        if (midPointLocalSpace.x < 0 && midPointLocalZAbs >= bowStringStretchLimit)
         {
             strength = 1;
             //Vector3 direction = midPointParent.TransformDirection(new Vector3(0, 0, midPointLocalSpace.z));
-            midPointVisualObject.localPosition = new Vector3(0, 0, -bowStringStretchLimit);
+            midPointVisualObject.localPosition = new Vector3(-bowStringStretchLimit, 0,0);
         }
     }
 
     private void HandleStringPushedBackToStart(Vector3 midPointLocalSpace)
     {
-        if (midPointLocalSpace.z >= 0)
+        if (midPointLocalSpace.x >= 0)
         {
             strength = 0;
             midPointVisualObject.localPosition = Vector3.zero;
