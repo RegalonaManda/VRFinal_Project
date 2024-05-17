@@ -141,7 +141,7 @@ public class BowStringController : MonoBehaviour
         if (midPointLocalSpace.x < 0 && midPointLocalZAbs >= bowStringStretchLimit)
         {
             //audioSource.Pause();
-            strength = 1;
+            strength = 2;
             //Vector3 direction = midPointParent.TransformDirection(new Vector3(0, 0, midPointLocalSpace.z));
             midPointVisualObject.localPosition = new Vector3(-bowStringStretchLimit, 0, 0 );
         }
