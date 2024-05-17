@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7538797676722563717}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AttachPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4741559537472931035}
   - component: {fileID: 3994133299689879084}
   - component: {fileID: 3156845244328526328}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MidPointGrabObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3754534317682570051}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MidPointParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 1271352826213270171}
   - component: {fileID: 7764647659538717840}
   - component: {fileID: 822151317449567098}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BowStringVisualization
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +455,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2416780193546783592}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BowEndPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2647519607086331433}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BowReleaseAudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3581515931698218269}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BowStringAudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +550,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2846097490726928640}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MidPointVisualObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +583,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8428991446780106550}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: End_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -614,7 +614,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 325248188144176499}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: End_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -648,7 +648,7 @@ GameObject:
   - component: {fileID: 2582864542614626517}
   - component: {fileID: 5573986409225429591}
   - component: {fileID: 210225629323804184}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -741,6 +741,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &9204835242026740608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3689364766791594048}
+  m_Layer: 3
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3689364766791594048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9204835242026740608}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.346, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 715533573949963065}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5865325922003154002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -754,16 +785,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0fa60688ae2a6c34aa89d71a592c468d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0fa60688ae2a6c34aa89d71a592c468d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0fa60688ae2a6c34aa89d71a592c468d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0fa60688ae2a6c34aa89d71a592c468d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -48.913
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0fa60688ae2a6c34aa89d71a592c468d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.192
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0fa60688ae2a6c34aa89d71a592c468d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.204
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0fa60688ae2a6c34aa89d71a592c468d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -775,11 +818,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0fa60688ae2a6c34aa89d71a592c468d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0fa60688ae2a6c34aa89d71a592c468d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0fa60688ae2a6c34aa89d71a592c468d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -793,9 +836,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0fa60688ae2a6c34aa89d71a592c468d, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0fa60688ae2a6c34aa89d71a592c468d, type: 3}
       propertyPath: m_Name
       value: BowEvil
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0fa60688ae2a6c34aa89d71a592c468d, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -830,7 +881,7 @@ PrefabInstance:
       addedObject: {fileID: 5238463679934762277}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0fa60688ae2a6c34aa89d71a592c468d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2598573049556652251}
+      addedObject: {fileID: 1149366849889179188}
   m_SourcePrefab: {fileID: 100100000, guid: 0fa60688ae2a6c34aa89d71a592c468d, type: 3}
 --- !u!4 &6264343962410947513 stripped
 Transform:
@@ -864,7 +915,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -903,7 +954,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 1918996417309383662}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1050,20 +1102,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e385d113b78928d49a20916fb552363d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bowStringRenderer: {fileID: 0}
+  bowStringRenderer: {fileID: 822151317449567098}
   midPointGrabObject: {fileID: 7663630547570483691}
   midPointVisualObject: {fileID: 2846097490726928640}
   midPointParent: {fileID: 3754534317682570051}
   bowStringStretchLimit: 1
   stringSoundThreshold: 0.001
-  audioSource: {fileID: 0}
   OnBowPulled:
     m_PersistentCalls:
       m_Calls: []
   OnBowReleased:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2598573049556652251
+--- !u!114 &1149366849889179188
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1076,8 +1127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   midPointVisual: {fileID: 6927847475958059308}
-  arrowPrefab: {fileID: 0}
-  arrowSpawnPoint: {fileID: 0}
+  arrowPrefab: {fileID: 2675246571416522201, guid: 93b95c0e9497d6349876623e275a4cc1, type: 3}
+  arrowSpawnPoint: {fileID: 9204835242026740608}
   arrowMaxSpeed: 10
   bowReleaseAudioSource: {fileID: 0}
 --- !u!1001 &7875828118057262080
@@ -1088,6 +1139,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2846097490726928640}
     m_Modifications:
+    - target: {fileID: 6809985485570261, guid: e41a7d900ba08c84bb5365076fcb0947, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7251527728983254841, guid: e41a7d900ba08c84bb5365076fcb0947, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1136,9 +1191,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arrow
       objectReference: {fileID: 0}
+    - target: {fileID: 8064058658943761795, guid: e41a7d900ba08c84bb5365076fcb0947, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7251527728983254841, guid: e41a7d900ba08c84bb5365076fcb0947, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3689364766791594048}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e41a7d900ba08c84bb5365076fcb0947, type: 3}
 --- !u!4 &715533573949963065 stripped

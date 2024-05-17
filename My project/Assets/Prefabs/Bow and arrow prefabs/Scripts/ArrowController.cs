@@ -10,8 +10,8 @@ public class ArrowController : MonoBehaviour
     [SerializeField]
     private float arrowMaxSpeed = 10;
 
-    [SerializeField]
-    private AudioSource bowReleaseAudioSource;
+    //[SerializeField]
+    //private AudioSource bowReleaseAudioSource;
 
     public void PrepareArrow()
     {
@@ -20,14 +20,14 @@ public class ArrowController : MonoBehaviour
 
     public void ReleaseArrow(float strength)
     {
-        bowReleaseAudioSource.Play();
+        //bowReleaseAudioSource.Play();
         midPointVisual.SetActive(false);
 
         GameObject arrow = Instantiate(arrowPrefab);
         arrow.transform.position = arrowSpawnPoint.transform.position;
         arrow.transform.rotation = midPointVisual.transform.rotation;
         Rigidbody rb = arrow.GetComponent<Rigidbody>();
-        rb.AddForce(midPointVisual.transform.forward * strength * arrowMaxSpeed, ForceMode.Impulse);
+        rb.AddForce(midPointVisual.transform.right * strength * arrowMaxSpeed, ForceMode.Impulse);
 
     }
 }
