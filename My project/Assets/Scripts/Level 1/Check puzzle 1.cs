@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -8,13 +9,10 @@ public class Checkpuzzle1 : MonoBehaviour
 {
 
     [SerializeField]
-    private Transform DinosaurTransform, TurttleTransform, BearTransform, RaindeerTransform;
+    private AudioSource hoverSource, selectedSource;
 
-    [SerializeField]
-    private Transform DinosaurSocketTransform, TurttleSocketTransform, BearSocketTransform, RaindeerSocketTransform;
-
-    [SerializeField]
-    private AudioSource audioSource;
+    private bool dinosaurCheck = false, turttleCheck = false, bearCheck = false, reindeerCheck = false;
+    private bool minigameCompleted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,10 +24,45 @@ public class Checkpuzzle1 : MonoBehaviour
     void Update()
     {
         
-        if (DinosaurTransform == DinosaurSocketTransform)
+        if(turttleCheck == true && dinosaurCheck == true && bearCheck == true && reindeerCheck == true)
         {
-            audioSource.Play();
+            minigameCompleted = true;
+        }
+
+        if(minigameCompleted == true)
+        {
+            Debug.Log("Minigame 1 finished");
         }
 
     }
+
+    public void PuzzleCheck(int i)
+    {
+        switch (i)
+        {
+            case 0:
+                turttleCheck = true;
+                break;
+            case 1:
+                dinosaurCheck = true;
+                break;
+            case 2: bearCheck = true;
+                break;
+            case 3: reindeerCheck = true;
+                break;
+            default: break;
+        }
+    }
+
+    public void HoverSound()
+    {
+        hoverSource.Play();
+    }
+
+    public void SelectedSound()
+    {
+        selectedSource.Play();
+    }
+
+
 }

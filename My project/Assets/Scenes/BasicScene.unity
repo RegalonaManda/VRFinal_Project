@@ -1394,6 +1394,111 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3514523279964193020, guid: f4bcc543ee6850249a2852d91ac072c9, type: 3}
+--- !u!1 &167857276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 167857277}
+  - component: {fileID: 167857280}
+  - component: {fileID: 167857279}
+  - component: {fileID: 167857278}
+  m_Layer: 0
+  m_Name: Cube (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &167857277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167857276}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.93, y: -1.69, z: 0.68}
+  m_LocalScale: {x: 3.5455756, y: 0.62824, z: 3.7160408}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 734098316}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &167857278
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167857276}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &167857279
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167857276}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &167857280
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167857276}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &182345953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,6 +1952,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1808769006}
+  - {fileID: 1558325361}
   m_Father: {fileID: 734098316}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1862,15 +1968,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722bd453fea1d3c4491d528a9c52a663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DinosaurTransform: {fileID: 596101653}
-  TurttleTransform: {fileID: 436366762}
-  BearTransform: {fileID: 448493240}
-  RaindeerTransform: {fileID: 1850478979}
-  DinosaurSocketTransform: {fileID: 2094379013}
-  TurttleSocketTransform: {fileID: 1469614002}
-  BearSocketTransform: {fileID: 779100022}
-  RaindeerSocketTransform: {fileID: 407119910}
-  audioSource: {fileID: 1808769007}
+  hoverSource: {fileID: 1558325362}
+  selectedSource: {fileID: 1808769007}
 --- !u!1 &299639867
 GameObject:
   m_ObjectHideFlags: 0
@@ -6944,32 +7043,44 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13e6b77e5ffb57f40875a8818e713280, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.47851
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13e6b77e5ffb57f40875a8818e713280, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.47851
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13e6b77e5ffb57f40875a8818e713280, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.47851
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 13e6b77e5ffb57f40875a8818e713280, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.17
+      value: 2.91
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13e6b77e5ffb57f40875a8818e713280, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9
+      value: -1.31
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13e6b77e5ffb57f40875a8818e713280, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.36
+      value: 2.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13e6b77e5ffb57f40875a8818e713280, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.74185866
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13e6b77e5ffb57f40875a8818e713280, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13e6b77e5ffb57f40875a8818e713280, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.67055637
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13e6b77e5ffb57f40875a8818e713280, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13e6b77e5ffb57f40875a8818e713280, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6977,7 +7088,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13e6b77e5ffb57f40875a8818e713280, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 84.22
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 13e6b77e5ffb57f40875a8818e713280, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -7239,16 +7350,28 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 632917e8230555a4889f844c26e5c86a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 47.850998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 632917e8230555a4889f844c26e5c86a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 47.850998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 632917e8230555a4889f844c26e5c86a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 47.850998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 632917e8230555a4889f844c26e5c86a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.884
+      value: -4.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 632917e8230555a4889f844c26e5c86a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.0110002
+      value: -1.503
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 632917e8230555a4889f844c26e5c86a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.826
+      value: 2.246
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 632917e8230555a4889f844c26e5c86a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7480,13 +7603,49 @@ MonoBehaviour:
   m_StartingTargetFilter: {fileID: 0}
   m_HoverEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 290686152}
+        m_TargetAssemblyTypeName: Checkpuzzle1, Assembly-CSharp
+        m_MethodName: HoverSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 290686152}
+        m_TargetAssemblyTypeName: Checkpuzzle1, Assembly-CSharp
+        m_MethodName: PuzzleCheck
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 290686152}
+        m_TargetAssemblyTypeName: Checkpuzzle1, Assembly-CSharp
+        m_MethodName: SelectedSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -7523,16 +7682,28 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 04c8bf64e935e4a47a3363512520e998, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 47.850998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 04c8bf64e935e4a47a3363512520e998, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 47.850998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 04c8bf64e935e4a47a3363512520e998, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 47.850998
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 04c8bf64e935e4a47a3363512520e998, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.47
+      value: -1.36
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 04c8bf64e935e4a47a3363512520e998, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.481
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 04c8bf64e935e4a47a3363512520e998, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.61
+      value: 2.3600001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 04c8bf64e935e4a47a3363512520e998, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8085,7 +8256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -65.7
+      value: -19.96
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9590,6 +9761,7 @@ Transform:
   - {fileID: 1309403885}
   - {fileID: 290686151}
   - {fileID: 822391363}
+  - {fileID: 167857277}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9968,13 +10140,49 @@ MonoBehaviour:
   m_StartingTargetFilter: {fileID: 0}
   m_HoverEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 290686152}
+        m_TargetAssemblyTypeName: Checkpuzzle1, Assembly-CSharp
+        m_MethodName: HoverSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 290686152}
+        m_TargetAssemblyTypeName: Checkpuzzle1, Assembly-CSharp
+        m_MethodName: PuzzleCheck
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 290686152}
+        m_TargetAssemblyTypeName: Checkpuzzle1, Assembly-CSharp
+        m_MethodName: SelectedSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -10318,8 +10526,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822391362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.57, y: -1.5, z: 0.68}
-  m_LocalScale: {x: 3.5455756, y: 1, z: 3.7160408}
+  m_LocalPosition: {x: -2.99, y: -1.79, z: 0.68}
+  m_LocalScale: {x: 7.371374, y: 0.3905, z: 3.7160408}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 734098316}
@@ -10489,16 +10697,28 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5833794c1b41f9c4ca5554db1bc7654f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.47851
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5833794c1b41f9c4ca5554db1bc7654f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.47851
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5833794c1b41f9c4ca5554db1bc7654f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.47851
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5833794c1b41f9c4ca5554db1bc7654f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.84
+      value: -2.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5833794c1b41f9c4ca5554db1bc7654f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.8
+      value: -1.4130001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5833794c1b41f9c4ca5554db1bc7654f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.172
+      value: 2.3500001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5833794c1b41f9c4ca5554db1bc7654f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13374,13 +13594,49 @@ MonoBehaviour:
   m_StartingTargetFilter: {fileID: 0}
   m_HoverEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 290686152}
+        m_TargetAssemblyTypeName: Checkpuzzle1, Assembly-CSharp
+        m_MethodName: HoverSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 290686152}
+        m_TargetAssemblyTypeName: Checkpuzzle1, Assembly-CSharp
+        m_MethodName: SelectedSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 290686152}
+        m_TargetAssemblyTypeName: Checkpuzzle1, Assembly-CSharp
+        m_MethodName: PuzzleCheck
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -14569,6 +14825,134 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4015128326712939851, guid: fd28f23af44f73f4a95e33435872ad15, type: 3}
   m_PrefabInstance: {fileID: 1557598815}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1558325360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1558325361}
+  - component: {fileID: 1558325362}
+  m_Layer: 0
+  m_Name: Hover Sound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1558325361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558325360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 290686151}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1558325362
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558325360}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7025de2539d1aa94fb71696ec6203c0d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1578860290
 GameObject:
   m_ObjectHideFlags: 0
@@ -14613,16 +14997,28 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49cb7c35e1465894babefe4872fb1343, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.47851
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 49cb7c35e1465894babefe4872fb1343, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.47851
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 49cb7c35e1465894babefe4872fb1343, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.47851
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 49cb7c35e1465894babefe4872fb1343, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.42
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49cb7c35e1465894babefe4872fb1343, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.921
+      value: -1.534
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49cb7c35e1465894babefe4872fb1343, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.81
+      value: 2.23
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49cb7c35e1465894babefe4872fb1343, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15444,7 +15840,7 @@ GameObject:
   - component: {fileID: 1808769006}
   - component: {fileID: 1808769007}
   m_Layer: 0
-  m_Name: Audio source
+  m_Name: Selected Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17820,13 +18216,49 @@ MonoBehaviour:
   m_StartingTargetFilter: {fileID: 0}
   m_HoverEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 290686152}
+        m_TargetAssemblyTypeName: Checkpuzzle1, Assembly-CSharp
+        m_MethodName: HoverSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 290686152}
+        m_TargetAssemblyTypeName: Checkpuzzle1, Assembly-CSharp
+        m_MethodName: PuzzleCheck
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 290686152}
+        m_TargetAssemblyTypeName: Checkpuzzle1, Assembly-CSharp
+        m_MethodName: SelectedSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
