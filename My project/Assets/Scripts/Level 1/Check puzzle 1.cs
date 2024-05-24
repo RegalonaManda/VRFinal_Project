@@ -10,15 +10,12 @@ public class Checkpuzzle1 : MonoBehaviour
 
     [SerializeField]
     private AudioSource hoverSource, selectedSource;
+    [SerializeField]
+    private Transform PlayerTransform, Level2StartPosition;
+
 
     private bool dinosaurCheck = false, turttleCheck = false, bearCheck = false, reindeerCheck = false;
     private bool minigameCompleted = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -32,6 +29,7 @@ public class Checkpuzzle1 : MonoBehaviour
         if(minigameCompleted == true)
         {
             Debug.Log("Minigame 1 finished");
+            PlayerTransform.position = Level2StartPosition.position;
         }
 
     }
