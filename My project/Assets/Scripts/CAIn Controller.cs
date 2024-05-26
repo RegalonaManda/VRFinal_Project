@@ -7,22 +7,22 @@ public class CAInController : MonoBehaviour
 {
 
     public AudioClip[] CAInVoiceLinesLevel1;
+    public AudioClip[] CAInVoiceLinesLevel2;
     public AudioSource CAIn;
 
     private AudioClip currentClip;
     private XRNode rightHand = XRNode.RightHand;
 
+    //level 1
     public void PlayIntroLine()
     {
         CAIn.Play();
     }
     public void PlayHintLevel1()
     {
-        if(CAIn.isPlaying == false)
-        {
-            CAIn.PlayOneShot(CAInVoiceLinesLevel1[0]);
-            currentClip = CAInVoiceLinesLevel1[0];
-        }
+        CAIn.Stop();
+        CAIn.PlayOneShot(CAInVoiceLinesLevel1[0]);
+        currentClip = CAInVoiceLinesLevel1[0];
     }
 
     public void PlayfinishLevel1NoHint()
@@ -37,15 +37,32 @@ public class CAInController : MonoBehaviour
         currentClip = CAInVoiceLinesLevel1[2];
     }
 
-    public float GetCurrentAudioClipLength()
+    //level 2
+
+    public void PlayIntroLevel2()
     {
-        if (CAIn.clip != null)
-        {
-            return currentClip.length;
-        }
-        return 0f;
+        CAIn.PlayOneShot(CAInVoiceLinesLevel2[0]);
+    }
+    public void PlayHintLevel2()
+    {
+        CAIn.Stop();
+        CAIn.PlayOneShot(CAInVoiceLinesLevel2[1]);
+        currentClip = CAInVoiceLinesLevel2[1];
     }
 
+    public void PlayfinishLevel2NoHint()
+    {
+        CAIn.PlayOneShot(CAInVoiceLinesLevel2[2]);
+        currentClip = CAInVoiceLinesLevel2[2];
+    }
+
+    public void PlayfinishLevel2()
+    {
+        CAIn.PlayOneShot(CAInVoiceLinesLevel2[3]);
+        currentClip = CAInVoiceLinesLevel2[3];
+    }
+
+    //stop voicelines
     private void Update()
     {
         // Check if the "A" button is pressed on the right controller
@@ -76,5 +93,15 @@ public class CAInController : MonoBehaviour
             CAIn.Stop();
             currentClip = null;
         }
+    }
+
+    //utils
+    public float GetCurrentAudioClipLength()
+    {
+        if (CAIn.clip != null)
+        {
+            return currentClip.length;
+        }
+        return 0f;
     }
 }

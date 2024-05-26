@@ -7,21 +7,17 @@ public class Checkpuzzle1 : MonoBehaviour
     [SerializeField] private Transform PlayerTransform, Level2StartPosition, Level1StartPosition;
     [SerializeField] private FadeController fadeController;
     [SerializeField] private CAInController cainController;
+    public GameObject level2Logic;
 
     private bool dinosaurCheck = false, turttleCheck = false, bearCheck = false, reindeerCheck = false;
     private bool HintAsked = false;
     private void Start()
     {
+        //uncomment
         PlayerTransform.position = Level1StartPosition.position;
         cainController.PlayIntroLine();
-    }
-
-    private void MinigameCompleted()
-    {
-        StartCoroutine(HandleMinigameCompletion());
-    }
-
-    private IEnumerator HandleMinigameCompletion()
+    } 
+    private IEnumerator HandleMinigame1Completion()
     {
         // Play the appropriate audio track
         if (HintAsked)
@@ -39,11 +35,6 @@ public class Checkpuzzle1 : MonoBehaviour
         yield return StartCoroutine(TeleportPlayer());
     }
 
-    void WaitAudioFinish()
-    {
-
-    }
-
     private IEnumerator TeleportPlayer()
     {
         //fade out
@@ -54,6 +45,9 @@ public class Checkpuzzle1 : MonoBehaviour
 
         //fade in
         yield return fadeController.FadeIn();
+
+        //activate level 2 logic
+        level2Logic.SetActive(true);
     }
 
     public void PuzzleCheck(int i)
@@ -64,28 +58,28 @@ public class Checkpuzzle1 : MonoBehaviour
                 turttleCheck = true;
                 if (dinosaurCheck && bearCheck && reindeerCheck)
                 {
-                    MinigameCompleted();
+                    StartCoroutine(HandleMinigame1Completion());
                 }
                 break;
             case 1:
                 dinosaurCheck = true;
                 if (turttleCheck && bearCheck && reindeerCheck)
                 {
-                    MinigameCompleted();
+                    StartCoroutine(HandleMinigame1Completion());
                 }
                 break;
             case 2:
                 bearCheck = true;
                 if (turttleCheck && dinosaurCheck && reindeerCheck)
                 {
-                    MinigameCompleted();
+                    StartCoroutine(HandleMinigame1Completion());
                 }
                 break;
             case 3:
                 reindeerCheck = true;
                 if (turttleCheck && dinosaurCheck && bearCheck)
                 {
-                    MinigameCompleted();
+                    StartCoroutine(HandleMinigame1Completion());
                 }
                 break;
             default:
