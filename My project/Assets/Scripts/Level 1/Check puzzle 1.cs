@@ -4,19 +4,44 @@ using UnityEngine;
 public class Checkpuzzle1 : MonoBehaviour
 {
     [SerializeField] private AudioSource hoverSource, selectedSource;
-    [SerializeField] private Transform PlayerTransform, Level2StartPosition;
+    [SerializeField] private Transform PlayerTransform, Level2StartPosition, Level1StartPosition;
     [SerializeField] private FadeController fadeController;
+    [SerializeField] private CAInController cainController;
 
     private bool dinosaurCheck = false, turttleCheck = false, bearCheck = false, reindeerCheck = false;
-    private bool minigameCompleted = false;
-
-    void Update()
+    private bool HintAsked = false;
+    private void Start()
     {
-        if (minigameCompleted)
+        PlayerTransform.position = Level1StartPosition.position;
+        cainController.PlayIntroLine();
+    }
+
+    private void MinigameCompleted()
+    {
+        StartCoroutine(HandleMinigameCompletion());
+    }
+
+    private IEnumerator HandleMinigameCompletion()
+    {
+        // Play the appropriate audio track
+        if (HintAsked)
         {
-            StartCoroutine(TeleportPlayer());
-            minigameCompleted = false; // avoid multiple calls
+            cainController.PlayfinishLevel1();
         }
+        else
+        {
+            cainController.PlayfinishLevel1NoHint();
+        }
+
+        // Wait for the audio to finish
+        yield return new WaitForSeconds(cainController.GetCurrentAudioClipLength());
+        // Start the teleport coroutine
+        yield return StartCoroutine(TeleportPlayer());
+    }
+
+    void WaitAudioFinish()
+    {
+
     }
 
     private IEnumerator TeleportPlayer()
@@ -39,33 +64,38 @@ public class Checkpuzzle1 : MonoBehaviour
                 turttleCheck = true;
                 if (dinosaurCheck && bearCheck && reindeerCheck)
                 {
-                    minigameCompleted = true;
+                    MinigameCompleted();
                 }
                 break;
             case 1:
                 dinosaurCheck = true;
                 if (turttleCheck && bearCheck && reindeerCheck)
                 {
-                    minigameCompleted = true;
+                    MinigameCompleted();
                 }
                 break;
             case 2:
                 bearCheck = true;
                 if (turttleCheck && dinosaurCheck && reindeerCheck)
                 {
-                    minigameCompleted = true;
+                    MinigameCompleted();
                 }
                 break;
             case 3:
                 reindeerCheck = true;
                 if (turttleCheck && dinosaurCheck && bearCheck)
                 {
-                    minigameCompleted = true;
+                    MinigameCompleted();
                 }
                 break;
             default:
                 break;
         }
+    }
+
+    public void HintCheck()
+    {
+        HintAsked = true;
     }
 
     public void HoverSound()
