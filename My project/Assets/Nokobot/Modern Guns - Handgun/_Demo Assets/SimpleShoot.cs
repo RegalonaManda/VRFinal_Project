@@ -32,11 +32,22 @@ public class SimpleShoot : MonoBehaviour
             gunAnimator = GetComponentInChildren<Animator>();
     }
 
-  
     public void PullTheTrigger()
     {
-        gunAnimator.SetTrigger("Fire");
+        // Si la animación está actualmente en curso, interrumpirla y reiniciarla
+        if (gunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Fire"))
+        {
+            // Reiniciar la animación de disparo
+            gunAnimator.Play("Fire", 0, 0f); // Rebobina la animación al inicio
+        }
+        else
+        {
+            // Iniciar la animación de disparo
+            gunAnimator.SetTrigger("ShootTrigger");
+            source.Play();
+        }
     }
+
 
 
     //This function creates the bullet behavior
