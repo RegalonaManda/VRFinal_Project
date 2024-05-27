@@ -14,8 +14,8 @@ public class Checkpuzzle1 : MonoBehaviour
     private void Start()
     {
         //uncomment
-        PlayerTransform.position = Level1StartPosition.position;
-        cainController.PlayIntroLine();
+        //PlayerTransform.position = Level1StartPosition.position;
+        //cainController.PlayIntroLine();
     } 
     private IEnumerator HandleMinigame1Completion()
     {

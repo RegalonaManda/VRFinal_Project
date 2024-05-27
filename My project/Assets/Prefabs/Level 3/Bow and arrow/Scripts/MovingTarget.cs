@@ -8,7 +8,6 @@ public class MovingTarget : MonoBehaviour, IHittable
     private bool stopped = false;
 
     private Vector3 nextposition;
-    private Vector3 originPosition;
 
     [SerializeField]
     private int health = 1;
@@ -17,32 +16,37 @@ public class MovingTarget : MonoBehaviour, IHittable
     private AudioSource audioSource;
 
     [SerializeField]
-    private float arriveThreshold, movementRadius = 2, speed = 1;
+    private float arriveThreshold = 0.1f, speed = 1f;
+
+    [SerializeField]
+    private Transform pointA, pointB; // Endpoints for vertical movement
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        originPosition = transform.position;
-        nextposition = GetNewMovementPosition();
-    }
-
-    private Vector3 GetNewMovementPosition()
-    {
-        return originPosition + (Vector3)Random.insideUnitCircle * movementRadius;
+        nextposition = pointA.position;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if ((rb.isKinematic || collision.gameObject.CompareTag("Arrow")) == false)
+        if (!rb.isKinematic && collision.gameObject.CompareTag("Arrow"))
         {
             audioSource.Play();
+
+            // Disable the arrow's physics
+            Rigidbody arrowRb = collision.gameObject.GetComponent<Rigidbody>();
+            if (arrowRb != null)
+            {
+                arrowRb.isKinematic = true;
+                arrowRb.transform.SetParent(transform); // Parent the arrow to the target
+            }
         }
     }
 
     public void GetHit()
     {
         health--;
-        if(health <= 0)
+        if (health <= 0)
         {
             rb.isKinematic = false;
             stopped = true;
@@ -51,11 +55,11 @@ public class MovingTarget : MonoBehaviour, IHittable
 
     private void FixedUpdate()
     {
-        if (stopped == false)
+        if (!stopped)
         {
-            if(Vector3.Distance(transform.position,nextposition) < arriveThreshold)
+            if (Vector3.Distance(transform.position, nextposition) < arriveThreshold)
             {
-                nextposition = GetNewMovementPosition();
+                nextposition = (nextposition == pointA.position) ? pointB.position : pointA.position;
             }
 
             Vector3 direction = nextposition - transform.position;

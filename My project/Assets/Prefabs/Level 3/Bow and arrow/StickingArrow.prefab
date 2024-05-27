@@ -155,19 +155,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2b70139668dfcdf44b77271ab841b468, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b70139668dfcdf44b77271ab841b468, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b70139668dfcdf44b77271ab841b468, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b70139668dfcdf44b77271ab841b468, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b70139668dfcdf44b77271ab841b468, type: 3}
       propertyPath: m_LocalPosition.x
@@ -286,8 +286,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Radius: 0.01551109
-  m_Center: {x: 1.3377228, y: 0.0015428532, z: -0.00022786856}
+  m_Radius: 0.01508522
+  m_Center: {x: 1.3207989, y: 0.0015428532, z: -0.00022786856}
 --- !u!65 &1097279224572653010
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -328,9 +328,9 @@ AudioSource:
   m_GameObject: {fileID: 6287258262679252324}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5186812513017422067, guid: 65ce4c4f24ef0554d84e7cd3ec16d9ac, type: 2}
   m_audioClip: {fileID: 8300000, guid: 73a9dd64ddf967e448b087dcc40cd8df, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
