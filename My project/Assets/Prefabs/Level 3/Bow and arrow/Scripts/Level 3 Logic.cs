@@ -19,29 +19,24 @@ public class Level3Logic : MonoBehaviour
     }
     public void CheckRemainingTargets()
     {
-        Debug.Log("checking targets");
 
         // Check if all targets are stopped
         if (targets.All(target => target.stopped))
         {
-            Debug.Log("minigame 3 completed");
             StartCoroutine(HandleMinigame3Completion());
         }
     }
 
     private IEnumerator HandleMinigame3Completion()
     {
-        Debug.Log("handling level 3 completion");
         // Play the appropriate audio track
         if (HintAsked)
         {
-            Debug.Log("playing fininsh level 3 audio");
 
             cainController.PlayfinishLevel3();
         }
         else
         {
-            Debug.Log("playing fininsh  nohint");
 
             cainController.PlayfinishLevel3NoHint();
         }

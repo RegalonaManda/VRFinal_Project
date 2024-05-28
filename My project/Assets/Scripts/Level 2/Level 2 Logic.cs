@@ -6,8 +6,6 @@ public class Level2Logic : MonoBehaviour
 {
     public List<Level2Button> buttons;
     public List<int> correctSequence;
-    [SerializeField]  private AudioClip[] SFX;
-    [SerializeField]  private AudioSource audioSource;
     [SerializeField] private CAInController cainController;
     [SerializeField] private FadeController fadeController;
     [SerializeField] private Transform PlayerTransform, Level3StartPosition;
@@ -34,12 +32,10 @@ public class Level2Logic : MonoBehaviour
                 StartCoroutine(HandleMinigame2Completion());
                 return true;
             }
-            audioSource.PlayOneShot(SFX[0]);
             return true;
         }
         else
         {
-            audioSource.PlayOneShot(SFX[1]);
             return false;
         }
     }
