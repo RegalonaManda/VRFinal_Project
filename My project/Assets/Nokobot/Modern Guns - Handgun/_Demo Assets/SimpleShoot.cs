@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 [AddComponentMenu("Nokobot/Modern Guns/Simple Shoot")]
 public class SimpleShoot : MonoBehaviour
@@ -23,6 +24,28 @@ public class SimpleShoot : MonoBehaviour
 
     public AudioSource source;
     public AudioClip fireSound;
+    public AudioClip reload;
+    public Magazine magazine;
+    public XRBaseInteractable socketInteractor;
+
+    public void AddMagazine(SelectEnterEventArgs args)
+    {
+        if (args.interactable is XRBaseInteractable interactable)
+        {
+            magazine = interactable.GetComponent<Magazine>();
+            source.PlayOneShot(reload);
+        }
+    }
+
+    public void RemoveMagazine(SelectExitEventArgs args)
+    {
+        if (args.interactable is XRBaseInteractable interactable)
+        {
+            magazine = null;
+            source.PlayOneShot(reload);
+        }
+    }
+
     void Start()
     {
         if (barrelLocation == null)
@@ -30,21 +53,40 @@ public class SimpleShoot : MonoBehaviour
 
         if (gunAnimator == null)
             gunAnimator = GetComponentInChildren<Animator>();
+
+        socketInteractor.selectEntered.AddListener(AddMagazine);
+        socketInteractor.selectExited.AddListener(RemoveMagazine);
+    }
+
+   
+    private void RemoveMagazine(SelectExitEventArgs arg0, XRBaseInteractable interactable)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void AddMagazine(SelectEnterEventArgs arg0, XRBaseInteractable interactable)
+    {
+        throw new System.NotImplementedException();
+        magazine = interactable.GetComponent<Magazine>();
+        source.PlayOneShot(reload);
     }
 
     public void PullTheTrigger()
     {
+      
         // Si la animación está actualmente en curso, interrumpirla y reiniciarla
         if (gunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Fire"))
         {
             // Reiniciar la animación de disparo
+            source.Play();
             gunAnimator.Play("Fire", 0, 0f); // Rebobina la animación al inicio
         }
         else
         {
             // Iniciar la animación de disparo
-            gunAnimator.SetTrigger("ShootTrigger");
             source.Play();
+            gunAnimator.SetTrigger("ShootTrigger");
+
         }
     }
 
