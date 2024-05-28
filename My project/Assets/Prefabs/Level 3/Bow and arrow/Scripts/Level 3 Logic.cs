@@ -10,6 +10,7 @@ public class Level3Logic : MonoBehaviour
     [SerializeField] private FadeController fadeController;
     [SerializeField] private Transform PlayerTransform, Level4StartPosition;
     public GameObject level4Logic;
+    private bool finishedMinigame = false;
 
     private bool HintAsked = false;
 
@@ -21,9 +22,10 @@ public class Level3Logic : MonoBehaviour
     {
 
         // Check if all targets are stopped
-        if (targets.All(target => target.stopped))
+        if (targets.All(target => target.stopped && !finishedMinigame))
         {
             StartCoroutine(HandleMinigame3Completion());
+            finishedMinigame = true;
         }
     }
 
