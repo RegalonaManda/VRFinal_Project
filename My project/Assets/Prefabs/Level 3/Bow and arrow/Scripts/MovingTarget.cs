@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovingTarget : MonoBehaviour, IHittable
 {
     private Rigidbody rb;
-    private bool stopped = false;
+    public bool stopped = false;
 
     private Vector3 nextposition;
 
@@ -20,6 +20,8 @@ public class MovingTarget : MonoBehaviour, IHittable
 
     [SerializeField]
     private Transform pointA, pointB; // Endpoints for vertical movement
+
+    public Level3Logic level3logic;
 
     private void Awake()
     {
@@ -50,6 +52,9 @@ public class MovingTarget : MonoBehaviour, IHittable
         {
             rb.isKinematic = false;
             stopped = true;
+            Debug.Log("target hit");
+            level3logic.CheckRemainingTargets();
+            
         }
     }
 

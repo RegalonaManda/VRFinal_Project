@@ -8,12 +8,13 @@ public class CAInController : MonoBehaviour
 
     public AudioClip[] CAInVoiceLinesLevel1;
     public AudioClip[] CAInVoiceLinesLevel2;
+    public AudioClip[] CAInVoiceLinesLevel3;
     public AudioSource CAIn;
 
     private AudioClip currentClip;
     private XRNode rightHand = XRNode.RightHand;
 
-    //level 1
+    //=========================LEVEL 1=========================
     public void PlayIntroLine()
     {
         CAIn.Play();
@@ -37,7 +38,7 @@ public class CAInController : MonoBehaviour
         currentClip = CAInVoiceLinesLevel1[2];
     }
 
-    //level 2
+    //=========================LEVEL 2=========================
 
     public void PlayIntroLevel2()
     {
@@ -60,6 +61,31 @@ public class CAInController : MonoBehaviour
     {
         CAIn.PlayOneShot(CAInVoiceLinesLevel2[3]);
         currentClip = CAInVoiceLinesLevel2[3];
+    }
+
+    //=========================LEVEL 3=========================
+
+    public void PlayIntroLevel3()
+    {
+        CAIn.PlayOneShot(CAInVoiceLinesLevel3[0]);
+    }
+    public void PlayHintLevel3()
+    {
+        CAIn.Stop();
+        CAIn.PlayOneShot(CAInVoiceLinesLevel3[1]);
+        currentClip = CAInVoiceLinesLevel3[1];
+    }
+
+    public void PlayfinishLevel3NoHint()
+    {
+        CAIn.PlayOneShot(CAInVoiceLinesLevel3[2]);
+        currentClip = CAInVoiceLinesLevel3[2];
+    }
+
+    public void PlayfinishLevel3()
+    {
+        CAIn.PlayOneShot(CAInVoiceLinesLevel3[3]);
+        currentClip = CAInVoiceLinesLevel3[3];
     }
 
     //stop voicelines

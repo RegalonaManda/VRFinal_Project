@@ -7,6 +7,7 @@ TagManager:
   - Anchor
   - Arrow
   - Diana
+  - Target
   layers:
   - Default
   - TransparentFX

@@ -16,7 +16,6 @@ public class Level2Logic : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("start level 2");
         cainController.PlayIntroLevel2();
         ResetGame();
     }
@@ -70,7 +69,7 @@ public class Level2Logic : MonoBehaviour
         //fade in
         yield return fadeController.FadeIn();
 
-        //activate level 2 logic
+        //activate level 3 logic
         level3Logic.SetActive(true);
     }
 
