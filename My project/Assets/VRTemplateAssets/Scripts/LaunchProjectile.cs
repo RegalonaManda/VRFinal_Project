@@ -23,23 +23,7 @@ namespace Unity.VRTemplate
         [Tooltip("The Collider of the player")]
         Collider m_PlayerCollider = null;
 
-        [SerializeField]
-        [Tooltip("The Line Renderer to visualize the raycast")]
-        LineRenderer m_LineRenderer = null;
-
         private bool isCollidingWithPlayer = false;
-
-        private void Start()
-        {
-            // Ensure LineRenderer is configured
-            if (m_LineRenderer != null)
-            {
-                m_LineRenderer.positionCount = 2;
-                m_LineRenderer.startWidth = 0.05f;
-                m_LineRenderer.endWidth = 0.05f;
-                m_LineRenderer.enabled = false; // Hide by default
-            }
-        }
 
         public void Fire()
         {
@@ -64,17 +48,6 @@ namespace Unity.VRTemplate
             Ray ray = new Ray(m_StartPoint.position, m_StartPoint.forward);
             RaycastHit hit;
 
-            // Visualize the Raycast using LineRenderer
-            if (m_LineRenderer != null)
-            {
-                m_LineRenderer.SetPosition(0, ray.origin);
-                m_LineRenderer.SetPosition(1, ray.origin + ray.direction * 100f);
-                m_LineRenderer.enabled = true; // Show the line
-
-                // Optionally hide the line after a short duration
-                Invoke(nameof(HideLineRenderer), 0.1f); // Hide after 0.1 seconds
-            }
-
             if (Physics.Raycast(ray, out hit))
             {
                 // Check if the hit object is the player
@@ -85,14 +58,6 @@ namespace Unity.VRTemplate
             }
 
             return false;
-        }
-
-        private void HideLineRenderer()
-        {
-            if (m_LineRenderer != null)
-            {
-                m_LineRenderer.enabled = false;
-            }
         }
 
         private void OnCollisionEnter(Collision collision)

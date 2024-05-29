@@ -9,6 +9,8 @@ public class CAInController : MonoBehaviour
     public AudioClip[] CAInVoiceLinesLevel1;
     public AudioClip[] CAInVoiceLinesLevel2;
     public AudioClip[] CAInVoiceLinesLevel3;
+    public AudioClip[] CAInVoiceLinesLevel4;
+    public AudioClip[] CAInVoiceLinesLevel5;
     public AudioSource CAIn;
 
     private AudioClip currentClip;
@@ -86,6 +88,56 @@ public class CAInController : MonoBehaviour
     {
         CAIn.PlayOneShot(CAInVoiceLinesLevel3[3]);
         currentClip = CAInVoiceLinesLevel3[3];
+    }
+
+    //=========================LEVEL 4=========================
+
+    public void PlayIntroLevel4()
+    {
+        CAIn.PlayOneShot(CAInVoiceLinesLevel4[0]);
+    }
+    public void PlayHintLevel4()
+    {
+        CAIn.Stop();
+        CAIn.PlayOneShot(CAInVoiceLinesLevel4[1]);
+        currentClip = CAInVoiceLinesLevel4[1];
+    }
+
+    public void PlayfinishLevel4NoHint()
+    {
+        CAIn.PlayOneShot(CAInVoiceLinesLevel4[2]);
+        currentClip = CAInVoiceLinesLevel4[2];
+    }
+
+    public void PlayfinishLevel4()
+    {
+        CAIn.PlayOneShot(CAInVoiceLinesLevel4[3]);
+        currentClip = CAInVoiceLinesLevel4[3];
+    }
+
+    //=========================LEVEL 5=========================
+
+    public void PlayIntroLevel5()
+    {
+        CAIn.PlayOneShot(CAInVoiceLinesLevel5[0]);
+    }
+    public void PlayHintLevel5()
+    {
+        CAIn.Stop();
+        CAIn.PlayOneShot(CAInVoiceLinesLevel5[1]);
+        currentClip = CAInVoiceLinesLevel5[1];
+    }
+
+    public void PlayfinishLevel5NoHint()
+    {
+        CAIn.PlayOneShot(CAInVoiceLinesLevel5[2]);
+        currentClip = CAInVoiceLinesLevel5[2];
+    }
+
+    public void PlayfinishLevel5()
+    {
+        CAIn.PlayOneShot(CAInVoiceLinesLevel5[3]);
+        currentClip = CAInVoiceLinesLevel5[3];
     }
 
     //stop voicelines

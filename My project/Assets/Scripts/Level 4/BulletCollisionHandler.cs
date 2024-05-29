@@ -4,6 +4,17 @@ public class BulletCollisionHandler : MonoBehaviour
 {
     // Ajusta esto si la bala debe causar daño
     public int damageAmount = 10;
+    private Level4Logic level4logic;
+
+    private void Start()
+    {
+        level4logic = FindObjectOfType<Level4Logic>();
+        if (level4logic == null)
+        {
+            Debug.LogError("Level4Logic not found in the scene.");
+        }
+        Debug.Log("Level4Logic found in the scene.");
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -12,6 +23,8 @@ public class BulletCollisionHandler : MonoBehaviour
         if (collision.gameObject.CompareTag("Diana"))
         {
             Debug.Log("Colisión con Diana detectada. Destruyendo ambos objetos.");
+            level4logic.TargetsShot += 1;
+            level4logic.CheckRemainingTargets();
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }

@@ -8,6 +8,7 @@ public class Cannon : MonoBehaviour
     public float fireForce = 10f;  // Fuerza con la que se dispararán las dianas
     public float fireRate = 1f;    // Cadencia de disparo (dianas por segundo)
     private float nextFireTime;    // Tiempo para el próximo disparo
+    public Level4Logic level4logic;
 
     void Start()
     {
@@ -18,7 +19,7 @@ public class Cannon : MonoBehaviour
     void Update()
     {
         // Comprobar si es el momento de disparar
-        if (Time.time >= nextFireTime)
+        if (Time.time >= nextFireTime && !level4logic.FinishedMinigame)
         {
             Fire();
             nextFireTime = Time.time + 1f / fireRate;
