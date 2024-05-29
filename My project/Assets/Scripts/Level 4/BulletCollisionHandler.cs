@@ -11,9 +11,8 @@ public class BulletCollisionHandler : MonoBehaviour
         level4logic = FindObjectOfType<Level4Logic>();
         if (level4logic == null)
         {
-            Debug.LogError("Level4Logic not found in the scene.");
+
         }
-        Debug.Log("Level4Logic found in the scene.");
     }
 
     private void OnCollisionEnter(Collision collision)
