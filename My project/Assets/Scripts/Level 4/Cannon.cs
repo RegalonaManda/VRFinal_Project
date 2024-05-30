@@ -19,7 +19,7 @@ public class Cannon : MonoBehaviour
     void Update()
     {
         // Comprobar si es el momento de disparar
-        if (Time.time >= nextFireTime && !level4logic.FinishedMinigame)
+        if (Time.time >= nextFireTime && !level4logic.FinishedMinigame && level4logic.isActiveAndEnabled)
         {
             Fire();
             nextFireTime = Time.time + 1f / fireRate;

@@ -23,17 +23,24 @@ namespace Unity.VRTemplate
         [Tooltip("The Collider of the player")]
         Collider m_PlayerCollider = null;
 
+        [SerializeField] private Level5Logic level5logic;
+
         private bool isCollidingWithPlayer = false;
 
         public void Fire()
         {
+            Debug.Log("shooting at yourelf");
             // Check if the gun is pointing towards the player or colliding with the player
             if (IsPointingAtPlayer() || isCollidingWithPlayer)
             {
                 GameObject newObject = Instantiate(m_ProjectilePrefab, m_StartPoint.position, m_StartPoint.rotation, null);
 
                 if (newObject.TryGetComponent(out Rigidbody rigidBody))
+                {
+                    Debug.Log("shooting at yourelf");
                     ApplyForce(rigidBody);
+                    level5logic.Minigame5Finished();
+                }
             }
         }
 

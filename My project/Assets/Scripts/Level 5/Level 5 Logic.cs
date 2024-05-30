@@ -2,52 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level4Logic : MonoBehaviour
+public class Level5Logic : MonoBehaviour
 {
-    private int targetsShot = 0;
-    [SerializeField] private int numberOfTargets;
     [SerializeField] private CAInController cainController;
     [SerializeField] private FadeController fadeController;
-    [SerializeField] private Transform PlayerTransform, Level5StartPosition;
-    public GameObject level5Logic;
-    private bool finishedMinigame = false;
+    [SerializeField] private Transform PlayerTransform, Level6StartPosition;
+    public GameObject level6Logic;
     private bool HintAsked = false;
-
+    private bool finishedMinigame = false;
     public bool FinishedMinigame
     {
         get { return finishedMinigame; }
         set { finishedMinigame = value; }
     }
-    public int TargetsShot
-    {
-        get { return targetsShot; }
-        set { targetsShot = value; }
-    }
     private void Start()
     {
-        cainController.PlayIntroLevel4();
+        cainController.PlayIntroLevel5();
     }
-
-    public void CheckRemainingTargets()
+    public void Minigame5Finished()
     {
-        // Check if the necesary number of targets are shot
-        if (numberOfTargets == targetsShot && !finishedMinigame)
+        Debug.Log("mingame 5 finished");
+        if(!finishedMinigame)
         {
-            StartCoroutine(HandleMinigame4Completion());
-            finishedMinigame = true;
+            FinishedMinigame = true;
+            StartCoroutine(HandleMinigame5Completion());
         }
     }
 
-    private IEnumerator HandleMinigame4Completion()
+    private IEnumerator HandleMinigame5Completion()
     {
         // Play the appropriate audio track
         if (HintAsked)
         {
-            cainController.PlayfinishLevel4();
+
+            cainController.PlayfinishLevel5();
         }
         else
         {
-            cainController.PlayfinishLevel4NoHint();
+
+            cainController.PlayfinishLevel5NoHint();
         }
 
         // Wait for the audio to finish
@@ -62,13 +55,13 @@ public class Level4Logic : MonoBehaviour
         yield return fadeController.FadeOut();
 
         // Tp player
-        PlayerTransform.position = Level5StartPosition.position;
+        PlayerTransform.position = Level6StartPosition.position;
 
         //fade in
         yield return fadeController.FadeIn();
 
         //activate level 4 logic
-        level5Logic.SetActive(true);
+        level6Logic.SetActive(true);
     }
     public void HintCheck()
     {

@@ -14,7 +14,7 @@ public class Level2Logic : MonoBehaviour
     private int currentStep;
     private bool HintAsked = false;
 
-    void Start()
+    private void Start()
     {
         cainController.PlayIntroLevel2();
         ResetGame();

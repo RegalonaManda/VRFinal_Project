@@ -13,7 +13,7 @@ public class Level3Logic : MonoBehaviour
     private bool finishedMinigame = false;
     private bool HintAsked = false;
 
-    void Start()
+    private void Start()
     {
         cainController.PlayIntroLevel3();
     }

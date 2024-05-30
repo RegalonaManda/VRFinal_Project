@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Checkpuzzle1 : MonoBehaviour
+public class Level1Logic : MonoBehaviour
 {
     [SerializeField] private AudioSource hoverSource, selectedSource;
     [SerializeField] private Transform PlayerTransform, Level2StartPosition, Level1StartPosition;
@@ -13,9 +13,8 @@ public class Checkpuzzle1 : MonoBehaviour
     private bool HintAsked = false;
     private void Start()
     {
-        //uncomment
-        //PlayerTransform.position = Level1StartPosition.position;
-        //cainController.PlayIntroLine();
+        PlayerTransform.position = Level1StartPosition.position;
+        cainController.PlayIntroLine();
     } 
     private IEnumerator HandleMinigame1Completion()
     {
