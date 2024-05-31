@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8780600598994312470
+--- !u!1 &8011150398379775640
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3679076629147244313}
-  - component: {fileID: 545246055157884761}
-  - component: {fileID: 8159927583410049171}
-  - component: {fileID: 5736031866404497406}
-  - component: {fileID: 588925630946199639}
+  - component: {fileID: 4571007205003193374}
+  - component: {fileID: 6464862633517934040}
+  - component: {fileID: 3896006805646123902}
+  - component: {fileID: 1104804928837464000}
+  - component: {fileID: 3486097039923896674}
   m_Layer: 0
-  m_Name: tuputamadre
+  m_Name: PlateNoBroken
   m_TagString: Diana
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3679076629147244313
+--- !u!4 &4571007205003193374
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8780600598994312470}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.9500046, y: 1.0035293, z: -15.577651}
-  m_LocalScale: {x: 0.5177531, y: 0.46234602, z: 0.2045}
+  m_GameObject: {fileID: 8011150398379775640}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -86.204, y: 3.572, z: -6.47}
+  m_LocalScale: {x: 0.25755, y: 0.25755, z: 0.25755}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &545246055157884761
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!33 &6464862633517934040
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8780600598994312470}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8159927583410049171
+  m_GameObject: {fileID: 8011150398379775640}
+  m_Mesh: {fileID: -2124705421725058983, guid: 4239240d8a10176448711b4358255e2e, type: 3}
+--- !u!23 &3896006805646123902
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8780600598994312470}
+  m_GameObject: {fileID: 8011150398379775640}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: -2655367994135617744, guid: 4239240d8a10176448711b4358255e2e, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,13 +85,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5736031866404497406
+--- !u!65 &1104804928837464000
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8780600598994312470}
+  m_GameObject: {fileID: 8011150398379775640}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -104,15 +104,15 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.7979335, y: 1.7210314, z: 1}
-  m_Center: {x: 0.05964193, y: -0.051022068, z: 0}
---- !u!54 &588925630946199639
+  m_Size: {x: 3.1317585, y: 4.268907, z: 3.1317594}
+  m_Center: {x: -0.000000115714705, y: -1.4488342, z: 0.0000001157147}
+--- !u!54 &3486097039923896674
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8780600598994312470}
+  m_GameObject: {fileID: 8011150398379775640}
   serializedVersion: 4
   m_Mass: 0.3
   m_Drag: 0
