@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level6Logic : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class Level6Logic : MonoBehaviour
     {
         //Instantiate(explosionEffect, transform.position, transform.rotation);
         Debug.Log("Bomb exploded!");
+        SceneManager.LoadScene("BasicScene");
         // Lógica adicional para manejar la explosión, como destruir la bomba, etc.
     }
 }
