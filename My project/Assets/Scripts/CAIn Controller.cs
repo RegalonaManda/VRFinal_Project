@@ -11,6 +11,7 @@ public class CAInController : MonoBehaviour
     public AudioClip[] CAInVoiceLinesLevel3;
     public AudioClip[] CAInVoiceLinesLevel4;
     public AudioClip[] CAInVoiceLinesLevel5;
+    public AudioClip[] CAInVoiceLinesLevel6;
     public AudioSource CAIn;
 
     private AudioClip currentClip;
@@ -138,6 +139,19 @@ public class CAInController : MonoBehaviour
     {
         CAIn.PlayOneShot(CAInVoiceLinesLevel5[3]);
         currentClip = CAInVoiceLinesLevel5[3];
+    }
+
+    //=========================FINAL LEVEL=========================
+
+    public void PlayIntroLevel6()
+    {
+        CAIn.PlayOneShot(CAInVoiceLinesLevel6[0]);
+    }
+
+    public void PlayfinishLevel6()
+    {
+        CAIn.PlayOneShot(CAInVoiceLinesLevel6[1]);
+        currentClip = CAInVoiceLinesLevel6[1];
     }
 
     //stop voicelines

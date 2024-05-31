@@ -5,7 +5,13 @@ public class Level6Logic : MonoBehaviour
     //public GameObject explosionEffect; // Prefab de efecto de explosión
     public Cable[] correctOrder; // Array de cables en el orden correcto
     private int currentCutIndex = 0;
+    [SerializeField] private CAInController cainController;
+    [SerializeField] private FadeController fadeController;
 
+    private void Start()
+    {
+        cainController.PlayIntroLevel6();
+    }
     public void CableCut(Cable cutCable)
     {
         if (correctOrder[currentCutIndex] == cutCable)
@@ -13,7 +19,7 @@ public class Level6Logic : MonoBehaviour
             currentCutIndex++;
             if (currentCutIndex >= correctOrder.Length)
             {
-                Debug.Log("Bomb defused!");
+                cainController.PlayfinishLevel6();
             }
         }
         else
