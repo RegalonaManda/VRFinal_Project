@@ -6,45 +6,30 @@ using UnityEngine.XR.Interaction.Toolkit;
 [AddComponentMenu("Nokobot/Modern Guns/Simple Shoot")]
 public class SimpleShoot : MonoBehaviour
 {
-    [Header("Prefab Refrences")]
+    [Header("Prefab References")]
     public GameObject bulletPrefab;
     public GameObject casingPrefab;
     public GameObject muzzleFlashPrefab;
 
-    [Header("Location Refrences")]
+    [Header("Location References")]
     [SerializeField] private Animator gunAnimator;
     [SerializeField] private Transform barrelLocation;
     [SerializeField] private Transform casingExitLocation;
 
     [Header("Settings")]
-    [Tooltip("Specify time to destory the casing object")] [SerializeField] private float destroyTimer = 2f;
+    [Tooltip("Specify time to destroy the casing object")] [SerializeField] private float destroyTimer = 2f;
     [Tooltip("Bullet Speed")] [SerializeField] private float shotPower = 500f;
     [Tooltip("Casing Ejection Speed")] [SerializeField] private float ejectPower = 150f;
-
+    [Tooltip("Cooldown between shots in seconds")] [SerializeField] private float shotCooldown = 0.5f;
 
     public AudioSource source;
     public AudioClip fireSound;
     public AudioClip reload;
+    public AudioClip noammo;
     public Magazine magazine;
-    public XRBaseInteractable socketInteractor;
+    public XRSocketInteractor socketInteractor;
 
-    public void AddMagazine(SelectEnterEventArgs args)
-    {
-        if (args.interactable is XRBaseInteractable interactable)
-        {
-            magazine = interactable.GetComponent<Magazine>();
-            source.PlayOneShot(reload);
-        }
-    }
-
-    public void RemoveMagazine(SelectExitEventArgs args)
-    {
-        if (args.interactable is XRBaseInteractable interactable)
-        {
-            magazine = null;
-            source.PlayOneShot(reload);
-        }
-    }
+    private bool canShoot = true;
 
     void Start()
     {
@@ -58,39 +43,50 @@ public class SimpleShoot : MonoBehaviour
         socketInteractor.selectExited.AddListener(RemoveMagazine);
     }
 
-   
-    private void RemoveMagazine(SelectExitEventArgs arg0, XRBaseInteractable interactable)
+    public void AddMagazine(SelectEnterEventArgs args)
     {
-        throw new System.NotImplementedException();
+        if (args.interactable is XRBaseInteractable interactable)
+        {
+            magazine = interactable.GetComponent<Magazine>();
+            source.PlayOneShot(reload);
+        }
     }
 
-    private void AddMagazine(SelectEnterEventArgs arg0, XRBaseInteractable interactable)
+    public void RemoveMagazine(SelectExitEventArgs args)
     {
-        throw new System.NotImplementedException();
-        magazine = interactable.GetComponent<Magazine>();
+        magazine = null;
         source.PlayOneShot(reload);
     }
 
     public void PullTheTrigger()
     {
-      
-        // Si la animación está actualmente en curso, interrumpirla y reiniciarla
-        if (gunAnimator.GetCurrentAnimatorStateInfo(0).IsName("Fire"))
+        if (canShoot && magazine != null && magazine.bulletCount > 0)
         {
-            // Reiniciar la animación de disparo
-            source.Play();
-            gunAnimator.Play("Fire", 0, 0f); // Rebobina la animación al inicio
+            StartCoroutine(ShootCoroutine());
         }
-        else
+        else if (magazine == null || magazine.bulletCount == 0)
         {
-            // Iniciar la animación de disparo
-            source.Play();
-            gunAnimator.SetTrigger("ShootTrigger");
-
+            source.PlayOneShot(noammo);
+            Debug.Log("Out of bullets! Reload!");
         }
     }
 
+    private IEnumerator ShootCoroutine()
+    {
+        canShoot = false;
 
+        // Disparar una bala
+        Shoot();
+        magazine.bulletCount--;
+
+        // Reproducir sonido y activar animación
+        source.PlayOneShot(fireSound);
+        gunAnimator.SetTrigger("ShootTrigger");
+
+        // Esperar a que la animación termine antes de permitir otro disparo
+        yield return new WaitForSeconds(shotCooldown);
+        canShoot = true;
+    }
 
     //This function creates the bullet behavior
     void Shoot()
@@ -105,13 +101,12 @@ public class SimpleShoot : MonoBehaviour
             Destroy(tempFlash, destroyTimer);
         }
 
-        //cancels if there's no bullet prefeb
+        //Cancels if there's no bullet prefab
         if (!bulletPrefab)
         { return; }
 
         // Create a bullet and add force on it in direction of the barrel
         Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
-
     }
 
     //This function creates a casing at the ejection slot
@@ -125,12 +120,13 @@ public class SimpleShoot : MonoBehaviour
         GameObject tempCasing;
         tempCasing = Instantiate(casingPrefab, casingExitLocation.position, casingExitLocation.rotation) as GameObject;
         //Add force on casing to push it out
-        tempCasing.GetComponent<Rigidbody>().AddExplosionForce(Random.Range(ejectPower * 0.7f, ejectPower), (casingExitLocation.position - casingExitLocation.right * 0.3f - casingExitLocation.up * 0.6f), 1f);
+        tempCasing.GetComponent<Rigidbody>().AddExplosionForce(Random.Range(ejectPower * 0.7f, ejectPower),
+            (casingExitLocation.position - casingExitLocation.right * 0.3f - casingExitLocation.up * 0.6f), 1f);
         //Add torque to make casing spin in random direction
-        tempCasing.GetComponent<Rigidbody>().AddTorque(new Vector3(0, Random.Range(100f, 500f), Random.Range(100f, 1000f)), ForceMode.Impulse);
+        tempCasing.GetComponent<Rigidbody>().AddTorque(new Vector3(0, Random.Range(100f, 500f),
+            Random.Range(100f, 1000f)), ForceMode.Impulse);
 
         //Destroy casing after X seconds
         Destroy(tempCasing, destroyTimer);
     }
-
 }
