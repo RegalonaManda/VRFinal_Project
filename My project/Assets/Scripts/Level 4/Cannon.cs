@@ -8,6 +8,7 @@ public class Cannon : MonoBehaviour
     public float fireForce = 10f;  // Fuerza con la que se dispararán las dianas
     public float fireRate = 1f;    // Cadencia de disparo (dianas por segundo)
     private float nextFireTime;    // Tiempo para el próximo disparo
+    public Level4Logic level4logic;
 
     void Start()
     {
@@ -18,18 +19,17 @@ public class Cannon : MonoBehaviour
     void Update()
     {
         // Comprobar si es el momento de disparar
-        if (Time.time >= nextFireTime)
+        if (Time.time >= nextFireTime && !level4logic.FinishedMinigame && level4logic.isActiveAndEnabled)
         {
             Fire();
-            nextFireTime = Time.time + 1f / fireRate; // Actualizar el tiempo del próximo disparo
+            nextFireTime = Time.time + 1f / fireRate;
         }
     }
 
     void Fire()
     {
-        // Instanciar una nueva diana en el punto de disparo con rotación adicional en el eje X
-        Quaternion rotation = firePoint.rotation * Quaternion.Euler(90f, 0f, 0f);
-        GameObject dianaInstance = Instantiate(dianaPrefab, firePoint.position, rotation);
+        // Instanciar una nueva diana en el punto de disparo
+        GameObject dianaInstance = Instantiate(dianaPrefab, firePoint.position, firePoint.rotation);
 
         // Aplicar una fuerza a la diana para dispararla
         Rigidbody rb = dianaInstance.GetComponent<Rigidbody>();

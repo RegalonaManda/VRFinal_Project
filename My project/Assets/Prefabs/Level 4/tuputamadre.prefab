@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 545246055157884761}
   - component: {fileID: 8159927583410049171}
   - component: {fileID: 5736031866404497406}
+  - component: {fileID: 911565630557496220}
   - component: {fileID: 588925630946199639}
   m_Layer: 0
   m_Name: tuputamadre
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8780600598994312470}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.9500046, y: 1.0035293, z: -15.577651}
+  m_LocalPosition: {x: -1.36, y: 2.59, z: -15.13}
   m_LocalScale: {x: 0.5177531, y: 0.46234602, z: 0.2045}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -106,6 +107,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.7979335, y: 1.7210314, z: 1}
   m_Center: {x: 0.05964193, y: -0.051022068, z: 0}
+--- !u!114 &911565630557496220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8780600598994312470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ce8227d5e8ebb43bef9654c2f0f93b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &588925630946199639
 Rigidbody:
   m_ObjectHideFlags: 0
