@@ -95,6 +95,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 45ACP Bullet_Head
       objectReference: {fileID: 0}
+    - target: {fileID: 3625037896966406280, guid: 9e0ef2cf9cfc11c46bbe7f28b272f6fb, type: 3}
+      propertyPath: m_TagString
+      value: Bullet
+      objectReference: {fileID: 0}
     - target: {fileID: 8535412081993147290, guid: 9e0ef2cf9cfc11c46bbe7f28b272f6fb, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -226,8 +230,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 10
   CristalRoto: {fileID: 8300000, guid: 7e0eabae74796af42a07cce33bf481dd, type: 3}
-  audioSource: {fileID: 6920027767415921884}
   dianaPrefab: {fileID: 2757861793827174174, guid: 646fbfcc3ddd5b14d948eefa2a3f2517, type: 3}
+  minPitch: 0.8
+  maxPitch: 1.1
+  minVolume: 0.6
+  maxVolume: 1
 --- !u!82 &6920027767415921884
 AudioSource:
   m_ObjectHideFlags: 0
@@ -237,10 +244,10 @@ AudioSource:
   m_GameObject: {fileID: 6804990658058999119}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  OutputAudioMixerGroup: {fileID: 4526464700095937868, guid: 65ce4c4f24ef0554d84e7cd3ec16d9ac, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 7e0eabae74796af42a07cce33bf481dd, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -248,8 +255,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.38854003
-  MaxDistance: 484.75665
+  MinDistance: 0.10366821
+  MaxDistance: 13.117422
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -284,7 +291,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0

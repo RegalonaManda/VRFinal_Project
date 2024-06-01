@@ -5,12 +5,15 @@ public class BulletCollisionHandler : MonoBehaviour
     public int damageAmount = 10;
 
     // Referencias a los clips de sonido
-
-
     public AudioClip CristalRoto;
-    public AudioSource audioSource;
-    private Level4Logic level4logic;
     public GameObject dianaPrefab;
+    private Level4Logic level4logic;
+
+    // Rango de valores para el pitch y el volumen
+    public float minPitch = 0.9f;
+    public float maxPitch = 1.1f;
+    public float minVolume = 0.8f;
+    public float maxVolume = 1.0f;
 
     private void Start()
     {
@@ -19,22 +22,12 @@ public class BulletCollisionHandler : MonoBehaviour
         {
             Debug.LogError("No se encontró Level4Logic en la escena.");
         }
-
-        // Obtener el componente AudioSource
-        audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-        {
-            Debug.LogError("No se encontró AudioSource en el objeto de bala.");
-        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Diana"))
         {
-            // Reproducir sonido de acierto
-      
-
             // Guardar la velocidad y rotación angular del objeto original
             Rigidbody originalRb = collision.gameObject.GetComponent<Rigidbody>();
             Vector3 originalVelocity = Vector3.zero;
@@ -48,8 +41,6 @@ public class BulletCollisionHandler : MonoBehaviour
 
             // Instanciar el nuevo prefab en la misma posición y rotación que el objeto original
             GameObject newDiana = Instantiate(dianaPrefab, collision.transform.position, collision.transform.rotation);
-            audioSource.Play();
-            PlaySound(CristalRoto);
 
             // Aplicar la misma velocidad y rotación angular a todos los rigidbodies en el nuevo prefab
             Rigidbody[] newRbs = newDiana.GetComponentsInChildren<Rigidbody>();
@@ -59,23 +50,38 @@ public class BulletCollisionHandler : MonoBehaviour
                 newRb.angularVelocity = originalAngularVelocity;
             }
 
+            // Reproducir el sonido usando un objeto temporal y destruir los objetos
+            PlaySoundAtPosition(collision.transform.position, CristalRoto);
+
             // Destruir el objeto original y la bala
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
         else
         {
-            // Reproducir sonido de impacto
-           
+            // Destruir la bala en otros casos
             Destroy(gameObject);
         }
     }
 
-    private void PlaySound(AudioClip clip)
+    private void PlaySoundAtPosition(Vector3 position, AudioClip clip)
     {
-        if (audioSource != null && clip != null)
-        {
-            audioSource.PlayOneShot(clip);
-        }
+        // Crear un nuevo GameObject temporal para el sonido
+        GameObject soundGameObject = new GameObject("TempAudio");
+        soundGameObject.transform.position = position;
+
+        // Añadir y configurar el AudioSource
+        AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+        audioSource.clip = clip;
+
+        // Asignar valores aleatorios de pitch y volumen
+        audioSource.pitch = Random.Range(minPitch, maxPitch);
+        audioSource.volume = Random.Range(minVolume, maxVolume);
+
+        // Reproducir el sonido
+        audioSource.Play();
+
+        // Destruir el GameObject temporal después de que el sonido haya terminado
+        Destroy(soundGameObject, clip.length);
     }
 }

@@ -10,6 +10,7 @@ TagManager:
   - Target
   - Bullet
   - Knife
+  - DestroyPlate
   layers:
   - Default
   - TransparentFX
