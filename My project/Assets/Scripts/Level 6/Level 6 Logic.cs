@@ -10,14 +10,20 @@ public class Level6Logic : MonoBehaviour
     [SerializeField] private FadeController fadeController;
     [SerializeField] private AudioSource tickingAudioSource;
     [SerializeField] private AudioClip tickingClip;
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioClip WinningMusic;
+    [SerializeField] private AudioClip TensionMusic;
     [SerializeField] private BoxCollider playerCollider;
+    [SerializeField] private AudioSource AmbientEmitter;
     private bool timerStarted = false;
     private float countdownDuration = 60f; 
     private float maxPitch = 2f; 
 
     private void Start()
     {
+        AmbientEmitter.Stop();
         cainController.PlayIntroLevel6();
+        musicSource.PlayOneShot(WinningMusic);
     }
 
     public void CableCut(Cable cutCable)
@@ -58,11 +64,14 @@ public class Level6Logic : MonoBehaviour
         Debug.Log("xddd");
         if (!timerStarted)
         {
+            musicSource.Stop();
             Debug.Log("Tic started");
             timerStarted = true;
             StartCoroutine(StartTimer());
             PlayTickingSound();
             cainController.PlaySurpriseLevel6();
+            musicSource.PlayOneShot(TensionMusic);
+
         }
     }
 
