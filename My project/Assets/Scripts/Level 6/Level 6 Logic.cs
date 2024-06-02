@@ -1,26 +1,37 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Level6Logic : MonoBehaviour
 {
-    //public GameObject explosionEffect; // Prefab de efecto de explosión
-    public Cable[] correctOrder; // Array de cables en el orden correcto
+    public Cable[] correctOrder;
     private int currentCutIndex = 0;
     [SerializeField] private CAInController cainController;
     [SerializeField] private FadeController fadeController;
+    [SerializeField] private AudioSource tickingAudioSource;
+    [SerializeField] private AudioClip tickingClip;
+    [SerializeField] private BoxCollider playerCollider;
+    private bool timerStarted = false;
+    private float countdownDuration = 60f; 
+    private float maxPitch = 2f; 
 
     private void Start()
     {
         cainController.PlayIntroLevel6();
     }
+
     public void CableCut(Cable cutCable)
     {
         if (correctOrder[currentCutIndex] == cutCable)
         {
+            Debug.Log("Cable cut");
             currentCutIndex++;
             if (currentCutIndex >= correctOrder.Length)
             {
+                Debug.Log("Game finished");
                 cainController.PlayfinishLevel6();
+                StopTickingSound();
+                StopAllCoroutines();
             }
         }
         else
@@ -29,11 +40,67 @@ public class Level6Logic : MonoBehaviour
         }
     }
 
-    void Explode()
+    private IEnumerator TeleportPlayer()
     {
-        //Instantiate(explosionEffect, transform.position, transform.rotation);
-        Debug.Log("Bomb exploded!");
+        yield return fadeController.FadeOut();
         SceneManager.LoadScene("BasicScene");
-        // Lógica adicional para manejar la explosión, como destruir la bomba, etc.
+        yield return fadeController.FadeIn();
+    }
+
+    private void Explode()
+    {
+        Debug.Log("Bomb exploded!");
+        StartCoroutine(TeleportPlayer());
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("xddd");
+        if (!timerStarted)
+        {
+            Debug.Log("Tic started");
+            timerStarted = true;
+            StartCoroutine(StartTimer());
+            PlayTickingSound();
+            cainController.PlaySurpriseLevel6();
+        }
+    }
+
+    private IEnumerator StartTimer()
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < countdownDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            AdjustTickingPitch(elapsedTime / countdownDuration);
+            yield return null;
+        }
+        Explode();
+    }
+
+    private void PlayTickingSound()
+    {
+        if (tickingAudioSource != null && tickingClip != null)
+        {
+            tickingAudioSource.clip = tickingClip;
+            tickingAudioSource.loop = true;
+            tickingAudioSource.Play();
+        }
+    }
+
+    private void StopTickingSound()
+    {
+        if (tickingAudioSource != null)
+        {
+            tickingAudioSource.Stop();
+        }
+    }
+
+    private void AdjustTickingPitch(float progress)
+    {
+        if (tickingAudioSource != null)
+        {
+            tickingAudioSource.pitch = Mathf.Lerp(1f, maxPitch, progress);
+        }
     }
 }

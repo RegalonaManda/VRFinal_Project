@@ -13,6 +13,7 @@ public class Level2Logic : MonoBehaviour
 
     private int currentStep;
     private bool HintAsked = false;
+    private bool minigameCompleted = false; // Nueva bandera
 
     private void Start()
     {
@@ -22,13 +23,19 @@ public class Level2Logic : MonoBehaviour
 
     public bool CheckButtonPress(int buttonIndex)
     {
+        // Verificar si el minijuego ya se ha completado
+        if (minigameCompleted)
+        {
+            return false;
+        }
+
         if (buttonIndex == correctSequence[currentStep])
         {
             currentStep++;
             if (currentStep >= correctSequence.Count)
             {
                 // Minigame completed
-                Debug.Log("Minigame completed!");
+                minigameCompleted = true; // Establecer la bandera cuando el minijuego se completa
                 StartCoroutine(HandleMinigame2Completion());
                 return true;
             }
@@ -73,7 +80,6 @@ public class Level2Logic : MonoBehaviour
         level3Logic.SetActive(true);
     }
 
-
     public void ResetButtons()
     {
         foreach (var button in buttons)
@@ -85,6 +91,7 @@ public class Level2Logic : MonoBehaviour
 
     public void ResetGame()
     {
+        minigameCompleted = false; // Resetear la bandera al reiniciar el juego
         currentStep = 0;
         foreach (var button in buttons)
         {

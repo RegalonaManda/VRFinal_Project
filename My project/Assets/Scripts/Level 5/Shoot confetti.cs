@@ -20,6 +20,7 @@ public class Shootconfetti : MonoBehaviour
     [Tooltip("The Collider of the player")]
     Collider m_PlayerCollider = null;
 
+    [SerializeField] private AudioSource audiosource;
     [SerializeField] private Level5Logic level5logic;
 
     private bool isCollidingWithPlayer = false;
@@ -29,6 +30,7 @@ public class Shootconfetti : MonoBehaviour
         // Check if the gun is pointing towards the player or colliding with the player
         if (IsPointingAtPlayer() || isCollidingWithPlayer)
         {
+            audiosource.Play();
             GameObject newObject = Instantiate(m_ProjectilePrefab, m_StartPoint.position, m_StartPoint.rotation, null);
             level5logic.Minigame5Finished();
             if (newObject.TryGetComponent(out Rigidbody rigidBody))

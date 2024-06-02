@@ -53,6 +53,9 @@ public class BulletCollisionHandler : MonoBehaviour
             // Reproducir el sonido usando un objeto temporal y destruir los objetos
             PlaySoundAtPosition(collision.transform.position, CristalRoto);
 
+            level4logic.TargetsShot += 1;
+            level4logic.CheckRemainingTargets();
+
             // Destruir el objeto original y la bala
             Destroy(collision.gameObject);
             Destroy(gameObject);

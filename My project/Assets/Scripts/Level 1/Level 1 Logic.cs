@@ -7,25 +7,37 @@ public class Level1Logic : MonoBehaviour
     [SerializeField] private Transform PlayerTransform, Level2StartPosition, Level1StartPosition;
     [SerializeField] private FadeController fadeController;
     [SerializeField] private CAInController cainController;
+    [SerializeField] private SocketInteractionHandler[] Figures;
+    [SerializeField] private GameObject particlePrefab;
+    [SerializeField] private Transform attachPoint1, attachPoint2;
     public GameObject level2Logic;
 
-    private bool dinosaurCheck = false, turttleCheck = false, bearCheck = false, reindeerCheck = false;
     private bool HintAsked = false;
+    private bool finishedwrong = false;
+
     private void Start()
     {
         PlayerTransform.position = Level1StartPosition.position;
         cainController.PlayIntroLine();
-    } 
+    }
+
     private IEnumerator HandleMinigame1Completion()
     {
-        // Play the appropriate audio track
-        if (HintAsked)
+        // Play the appropriate audio track and trigger particles
+        if (HintAsked && !finishedwrong)
         {
             cainController.PlayfinishLevel1();
+            TriggerParticles();
+        }
+        else if (finishedwrong)
+        {
+            cainController.PlayfinishLevel1Wrong();
+            TriggerParticles();
         }
         else
         {
             cainController.PlayfinishLevel1NoHint();
+            TriggerParticles();
         }
 
         // Wait for the audio to finish
@@ -36,53 +48,61 @@ public class Level1Logic : MonoBehaviour
 
     private IEnumerator TeleportPlayer()
     {
-        //fade out
+        // Fade out
         yield return fadeController.FadeOut();
 
-        // Tp player
+        // TP player
         PlayerTransform.position = Level2StartPosition.position;
 
-        //fade in
+        // Fade in
         yield return fadeController.FadeIn();
 
-        //activate level 2 logic
+        // Activate level 2 logic
         level2Logic.SetActive(true);
     }
 
-    public void PuzzleCheck(int i)
+    public void PuzzleCheck()
     {
-        switch (i)
+        for (int i = 0; i < Figures.Length; ++i)
         {
-            case 0:
-                turttleCheck = true;
-                if (dinosaurCheck && bearCheck && reindeerCheck)
-                {
-                    StartCoroutine(HandleMinigame1Completion());
-                }
+            if (Figures[i].full)
+            {
+                Debug.Log(Figures[i].name + " is full");
+            }
+            else
+            {
+                Debug.Log(Figures[i].name + " is not full");
+                return;
+            }
+        }
+
+        Debug.Log("All figures are full");
+
+        for (int i = 0; i < Figures.Length; ++i)
+        {
+            if (Figures[i].Check)
+            {
+                Debug.Log(Figures[i].name + " is checked");
+            }
+            else
+            {
+                Debug.Log(Figures[i].name + " is not checked");
+                finishedwrong = true;
                 break;
-            case 1:
-                dinosaurCheck = true;
-                if (turttleCheck && bearCheck && reindeerCheck)
-                {
-                    StartCoroutine(HandleMinigame1Completion());
-                }
-                break;
-            case 2:
-                bearCheck = true;
-                if (turttleCheck && dinosaurCheck && reindeerCheck)
-                {
-                    StartCoroutine(HandleMinigame1Completion());
-                }
-                break;
-            case 3:
-                reindeerCheck = true;
-                if (turttleCheck && dinosaurCheck && bearCheck)
-                {
-                    StartCoroutine(HandleMinigame1Completion());
-                }
-                break;
-            default:
-                break;
+            }
+        }
+
+        Debug.Log("All figures are checked");
+        StartCoroutine(HandleMinigame1Completion());
+    }
+
+    private void TriggerParticles()
+    {
+        // Instanciar y reproducir partículas en los puntos de attach
+        if (particlePrefab != null && attachPoint1 != null && attachPoint2 != null)
+        {
+            Instantiate(particlePrefab, attachPoint1.position, attachPoint1.rotation);
+            Instantiate(particlePrefab, attachPoint2.position, attachPoint2.rotation);
         }
     }
 
