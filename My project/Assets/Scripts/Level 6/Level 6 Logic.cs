@@ -6,15 +6,25 @@ public class Level6Logic : MonoBehaviour
 {
     public Cable[] correctOrder;
     private int currentCutIndex = 0;
+
+    //controllers
     [SerializeField] private CAInController cainController;
     [SerializeField] private FadeController fadeController;
+    //ticking
     [SerializeField] private AudioSource tickingAudioSource;
     [SerializeField] private AudioClip tickingClip;
+    //musics
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioClip WinningMusic;
     [SerializeField] private AudioClip TensionMusic;
+    //explosion sfx + camera shake
+    [SerializeField] private AudioClip Explosion;
+    [SerializeField] private CameraShake cameraShake;
+    //player
     [SerializeField] private BoxCollider playerCollider;
+    //ambient emitter
     [SerializeField] private AudioSource AmbientEmitter;
+    //logic variables
     private bool timerStarted = false;
     private float countdownDuration = 60f; 
     private float maxPitch = 2f; 
@@ -48,6 +58,7 @@ public class Level6Logic : MonoBehaviour
 
     private IEnumerator TeleportPlayer()
     {
+        yield return new WaitForSeconds(1f);
         yield return fadeController.FadeOut();
         SceneManager.LoadScene("BasicScene");
         yield return fadeController.FadeIn();
@@ -55,6 +66,9 @@ public class Level6Logic : MonoBehaviour
 
     private void Explode()
     {
+        tickingAudioSource.Stop();
+        cameraShake.StartShake();
+        tickingAudioSource.PlayOneShot(Explosion);
         Debug.Log("Bomb exploded!");
         StartCoroutine(TeleportPlayer());
     }
