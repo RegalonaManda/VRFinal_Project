@@ -10,7 +10,7 @@ public class TeleportButton : MonoBehaviour
     {
         if (playerTransform != null && destinationTransform != null)
         {
-            playerTransform = destinationTransform;
+            playerTransform.position = destinationTransform.position;
             Debug.Log("Player teleported to: " + destinationTransform.position);
         }
         else

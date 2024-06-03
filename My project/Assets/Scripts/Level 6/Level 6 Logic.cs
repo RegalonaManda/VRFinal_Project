@@ -51,7 +51,10 @@ public class Level6Logic : MonoBehaviour
             {
                 cainController.PlayfinishLevel6();
                 StopTickingSound();
+                StopAllCoroutines();
                 StartCoroutine(TeleportPlayerWin());
+                musicSource.Stop();
+              
             }
         }
         else
@@ -79,6 +82,8 @@ public class Level6Logic : MonoBehaviour
 
         // Fade in
         yield return fadeController.FadeIn();
+     
+        StopAllCoroutines();
     }
     private void Explode()
     {
