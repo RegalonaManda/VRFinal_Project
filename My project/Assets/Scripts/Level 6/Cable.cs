@@ -5,6 +5,7 @@ public class Cable : MonoBehaviour
     public GameObject brokenCable;  // Referencia al cable roto
     public Level6Logic level6Logic; // Referencia al script del nivel
     public ParticleSystem cutParticles;  // Referencia al sistema de partículas
+    public Transform spark;
 
     private bool isCut = false;
 
@@ -27,9 +28,9 @@ public class Cable : MonoBehaviour
         // Reproducir partículas en la posición del collider del cable
         if (cutParticles != null)
         {
-            ParticleSystem particles = Instantiate(cutParticles, other.transform.position, Quaternion.identity);
+            ParticleSystem particles = Instantiate(cutParticles, spark.position, Quaternion.identity);
             particles.Play();
-            Destroy(particles.gameObject, particles.main.duration);
+            //Destroy(particles.gameObject, particles.main.duration);
         }
 
         // Notifica al Level6Logic que se ha cortado un cable

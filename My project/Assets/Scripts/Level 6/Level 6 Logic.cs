@@ -7,6 +7,9 @@ public class Level6Logic : MonoBehaviour
     public Cable[] correctOrder;
     private int currentCutIndex = 0;
 
+    //tp al nivel de victoria
+    [SerializeField] private Transform PlayerTransform;
+    [SerializeField] private Transform WinLevelTransform; 
     //controllers
     [SerializeField] private CAInController cainController;
     [SerializeField] private FadeController fadeController;
@@ -27,7 +30,9 @@ public class Level6Logic : MonoBehaviour
     //logic variables
     private bool timerStarted = false;
     private float countdownDuration = 60f; 
-    private float maxPitch = 2f; 
+    private float maxPitch = 2f;
+    [SerializeField] private AudioClip Spark;
+
 
     private void Start()
     {
@@ -40,14 +45,13 @@ public class Level6Logic : MonoBehaviour
     {
         if (correctOrder[currentCutIndex] == cutCable)
         {
-            Debug.Log("Cable cut");
             currentCutIndex++;
+            musicSource.PlayOneShot(Spark);
             if (currentCutIndex >= correctOrder.Length)
             {
-                Debug.Log("Game finished");
                 cainController.PlayfinishLevel6();
                 StopTickingSound();
-                StopAllCoroutines();
+                StartCoroutine(TeleportPlayerWin());
             }
         }
         else
@@ -56,6 +60,7 @@ public class Level6Logic : MonoBehaviour
         }
     }
 
+    
     private IEnumerator TeleportPlayer()
     {
         yield return new WaitForSeconds(1f);
@@ -63,7 +68,18 @@ public class Level6Logic : MonoBehaviour
         SceneManager.LoadScene("BasicScene");
         yield return fadeController.FadeIn();
     }
+    private IEnumerator TeleportPlayerWin()
+    {
+        yield return new WaitForSeconds(cainController.GetCurrentAudioClipLength());
+        // Fade out
+        yield return fadeController.FadeOut();
 
+        // TP player
+        PlayerTransform.position = WinLevelTransform.position;
+
+        // Fade in
+        yield return fadeController.FadeIn();
+    }
     private void Explode()
     {
         tickingAudioSource.Stop();

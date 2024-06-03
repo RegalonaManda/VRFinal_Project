@@ -231,6 +231,7 @@ MonoBehaviour:
   damageAmount: 10
   CristalRoto: {fileID: 8300000, guid: 7e0eabae74796af42a07cce33bf481dd, type: 3}
   dianaPrefab: {fileID: 2757861793827174174, guid: 646fbfcc3ddd5b14d948eefa2a3f2517, type: 3}
+  particlePrefab: {fileID: 8100169782637924918, guid: ba2a416276fbed34699d6f40a31fd9f8, type: 3}
   minPitch: 0.8
   maxPitch: 1.1
   minVolume: 0.6

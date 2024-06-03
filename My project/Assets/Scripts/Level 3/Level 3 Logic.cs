@@ -9,6 +9,7 @@ public class Level3Logic : MonoBehaviour
     [SerializeField] private CAInController cainController;
     [SerializeField] private FadeController fadeController;
     [SerializeField] private Transform PlayerTransform, Level4StartPosition;
+    [SerializeField] private GameObject Bow;
     public GameObject level4Logic;
     private bool finishedMinigame = false;
     private bool HintAsked = false;
@@ -55,6 +56,7 @@ public class Level3Logic : MonoBehaviour
 
         // Tp player
         PlayerTransform.position = Level4StartPosition.position;
+        Bow.SetActive(false);
 
         //fade in
         yield return fadeController.FadeIn();

@@ -12,7 +12,7 @@ public class SequentialAudioPlayer : MonoBehaviour
     {
         if (Songs == null || Songs.Length == 0)
         {
-            Debug.LogError("No audio sources assigned!");
+            Debug.LogError("No audio clips assigned!");
             return;
         }
 
@@ -26,8 +26,17 @@ public class SequentialAudioPlayer : MonoBehaviour
         {
             if (Songs[currentIndex] != null)
             {
-                audioSource.PlayOneShot(Songs[currentIndex]);
+                audioSource.clip = Songs[currentIndex];
+                audioSource.Play();
+
+                // Espera la duración del clip
                 yield return new WaitForSeconds(audioSource.clip.length);
+
+                // Espera hasta que el clip termine de reproducirse, en caso de que haya pausas o desincronización
+                while (audioSource.isPlaying)
+                {
+                    yield return null;
+                }
             }
 
             // Avanza al siguiente AudioSource, reiniciando si es necesario
